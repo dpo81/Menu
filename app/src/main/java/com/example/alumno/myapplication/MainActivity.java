@@ -1,5 +1,10 @@
 package com.example.alumno.myapplication;
 
+import android.Manifest;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,9 +21,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // habilitando el botòn back
-        ActionBar ab = getSupportActionBar();
-        ab.setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
@@ -42,9 +44,22 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 break;
             case R.id.op2:
                 Log.d("menu", "click 2");
+
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+
+                    Log.d("menu", "no se tiene permio para realizar llamadas");
+                }
+                else {
+                    Intent callIntent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4444"));
+                    startActivity(callIntent);
+                    Log.d("menu", "se llamò por telèfono");
+                }
+
                 break;
             case R.id.op3:
                 Log.d("menu", "click 3");
+                Intent i = new Intent(this, OtraActivity.class);
+                startActivity(i);
                 break;
             case android.R.id.home:
                 Log.d("menu", "click home");
