@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/op1"
+        android:orderInCategory="100"
+        android:title="Uno">
+        <menu>
+            <item
+                android:id="@+id/op2"
+                android:title="Dos" />
+            <item
+                android:id="@+id/op3"
+                android:title="Tres" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/icono"
+        android:icon="@mipmap/ic_launcher"
+        android:title="icono"
+        app:showAsAction="always"></item>
+    <item
+        android:id="@+id/buscar"
+        android:orderInCategory="100"
+        android:title="Buscar por"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always"></item>
+</menu>
